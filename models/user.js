@@ -2,8 +2,12 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
-    firstName: String,
-    lastName: String,
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+        lowercase: true
+    },
     email: {
         type: String,
         required: true,
@@ -14,7 +18,7 @@ var userSchema = new Schema({
         type: String,
         required: true
     },
-    admin: {
+    Parent: {
         type: Boolean,
         default: false
     }
