@@ -19,7 +19,7 @@ mongoose.connect(config.database, function (err) {
 
 app.use("/api", expressJwt({secret: config.secret}));
 
-// app.use("/auth", require("./routes/authRoutes"));
+ app.use("/auth", require("./routes/authRoutes"));
 //
 // app.use("/parent", checkParent, require("./routes/parentRoutes"));
 //
@@ -30,7 +30,7 @@ app.use("/api", expressJwt({secret: config.secret}));
 //     return res.status(403).send
 // }
 //
-// app.use("/student", require("./routes/studentRoutes"));
+ app.use("/api/student", require("./routes/studentRoutes"));
 
 app.listen(port, function () {
     console.log("Server running on port " + port);

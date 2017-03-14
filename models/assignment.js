@@ -25,6 +25,11 @@ var assignmentSchema = new Schema({
     },
     dueDate: {
         type: String
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
     }
 });
 
