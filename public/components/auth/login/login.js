@@ -1,7 +1,11 @@
-angular.module("routingApp") 
+angular.module("myApp.Auth")
 
-.controller("LoginController", ["$scope", function($scope){
-
-    $scope.name = "Login";
-    
+.controller("LoginController", ["$scope", "$location", "UserService", function ($scope, $location, UserService) {
+    $scope.login = function (user) {
+        UserService.login(user).then(function (data) {
+            $location.path("/todo");
+        }, function (data) {
+            alert(data.message);
+        });
+    };
 }])
