@@ -1,25 +1,25 @@
 var express = require("express");
 var authRoutes = express.Router();
-var User = require("../models/user");
+var User = require("../models/student");
 var jwt = require("jsonwebtoken");
 var config = require("../config");
 
-authRoutes.post("/signup", function (req, res) {
-    console.log(req.headers);
-    User.find({email: req.body.email}, function (err, existingUser) {
-        console.log(err);
-        if (err) return res.status(500).send(err);
-        if (existingUser.length) return res.send({success: false, message: "That email is already taken. Did you mean to log in?"});
+//authRoutes.post("/signup/student", function (req, res) {
+//    console.log(req.headers);
+//    User.find({email: req.body.email}, function (err, existingUser) {
+//        console.log(err);
+//        if (err) return res.status(500).send(err);
+//        if (existingUser.length) return res.send({success: false, message: "That email is already taken. Did you mean to log in?"});
+//
+//        var newUser = new User(req.body);
+//        newUser.save(function (err) {
+//            if (err) return res.status(500).send(err);
+//            res.status(201).send({success: true, user: newUser, message: "Successfully created a new user!"});
+//        });
+//    });
+//});
 
-        var newUser = new User(req.body);
-        newUser.save(function (err) {
-            if (err) return res.status(500).send(err);
-            res.status(201).send({success: true, user: newUser, message: "Successfully created a new user!"});
-        });
-    });
-});
-
-authRoutes.post("/login", function (req, res) {
+authRoutes.post("/login/student", function (req, res) {
     User.findOne({email: req.body.email}, function (err, user) {
         if (err) return res.status(500).send(err);
         console.log(req.body.password);

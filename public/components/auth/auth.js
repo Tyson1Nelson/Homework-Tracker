@@ -51,7 +51,7 @@ angular.module("myApp.Auth", ["ngRoute", "ngStorage"])
 
     this.logout = function() {
         TokenService.removeToken();
-        $location.path("/");
+        $location.path("/home");
     };
     this.isAuthenticated = function() {
         console.log("authenticated");

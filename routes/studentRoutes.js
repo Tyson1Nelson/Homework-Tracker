@@ -1,28 +1,32 @@
 var express = require("express");
 var studentRouter = express.Router();
-var Assignments = require("../models/assignment");
+var Student = require("../models/student");
+//var Student = require()
 
 
 studentRouter.route("/")
     .get(function (req, res) {
-    console.log("In student routes");
-        Assignments.find({user: req.user._id}, function (err, assignment) {
+    console.log(req.user.assignments);
+        Student.findById(req.user._id, function (err, student) {
             if (err) res.status(500).send(err);
-            res.send(assignment);
+            res.send(student);
         });
     })
     .post(function (req, res) {
-        var assignment = new Assignments(req.body);
-        assignment.user = req.user._id;
-        assignment.save(function (err, newAssignment) {
+//        console.log(req.body.assignments)
+//        console.log(req.user.assignments);
+        console.log(req.user);
+        var student = new Student(req.user.assignments);
+//        student.user = req.user._id;
+        student.save(function (err, newStudent) {
             if (err) res.status(500).send(err);
-            res.status(201).send(newAssignment);
+            res.status(201).send(newStudent);
         });
     });
 
 studentRouter.route("/:assignmentId")
     .get(function (req, res) {
-        Assignments.findOne({user: req.user._id, _id: req.params.assignmentId}, function (err, assignment) {
+        Student.findOne({user: req.user._id, _id: req.params.assignmentId}, function (err, assignment) {
             if (err) res.status(500).send(err);
             if (!assignment) res.status(404).send("No assignment item found.");
             else res.send(assignment);
@@ -30,7 +34,7 @@ studentRouter.route("/:assignmentId")
     })
 
     .put(function (req, res) {
-        Assignments.findOneAndUpdate({user: req.user._id, _id: req.params.assignmentId}, req.body, {new: true}, function (err, assignment) {
+        Student.findOneAndUpdate({user: req.user._id, _id: req.params.assignmentId}, req.body, {new: true}, function (err, assignment) {
             if (err) res.status(500).send(err);
             res.send(assignment);
         });
