@@ -1,44 +1,47 @@
 var express = require("express");
 var parentRoute = express.Router();
-var Assignments = require("../models/assignment");
+var Children = require("../models/student");
 
 parentRoute.route("/")
     .get(function (req, res) {
-        Assignments.find({user: req.user._id}, function (err, assignment) {
+    console.log(req.body);
+        Children.find({parent: req.user._id}, function (err, children) {
+//        console.log(user);
+            
             if (err) res.status(500).send(err);
-            res.send(assignment);
+            res.send(children);
         });
     })
 
     .post(function (req, res) {
-        var assignment = new Assignments(req.body);
-        assignment.user = req.user._id;
-        assignment.save(function (err, newAssignment) {
+        var child = new Children(req.body);
+        child.parent = req.user._id;
+        child.save(function (err, newChild) {
             if (err) res.status(500).send(err);
-            res.status(201).send(newAssignment);
+            res.status(201).send(newChild);
         });
     });
 
-parentRoute.route("/:assignmentId")
+parentRoute.route("/:childId")
     .get(function (req, res) {
-        Assignments.findOne({user: req.user._id, _id: req.params.assignmentId}, function (err, assignment) {
+        Children.findOne({_id: req.params.childId, parent: req.user._id}, function (err, child) {
             if (err) res.status(500).send(err);
-            if (!assignment) res.status(404).send("No assignment item found.");
-            else res.send(assignment);
+            if (!child) res.status(404).send("No child item found.");
+            else res.send(child);
         });
     })
 
     .put(function (req, res) {
-        Assignments.findOneAndUpdate({user: req.user._id, _id: req.params.assignmentId}, req.body, {new: true}, function (err, assignment) {
+        Children.findOneAndUpdate({_id: req.params.childId, parent: req.user._id}, req.body, {new: true}, function (err, child) {
             if (err) res.status(500).send(err);
-            res.send(assignment);
+            res.send(child);
         });
     })
 
     .delete(function (req, res) {
-        Assignments.findOneAndRemove({user: req.user._id, _id: req.params.assignmentId}, function (err, assignment) {
+        Children.findOneAndRemove({_id: req.params.childId, parent: req.user._id}, function (err, child) {
             if (err) res.status(500).send(err);
-            res.send(assignment);
+            res.send(child);
         });
     });
 

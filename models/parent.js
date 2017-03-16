@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var userSchema = new Schema({
+var parentSchema = new Schema({
     username: {
         type: String,
         required: true,
@@ -17,11 +17,7 @@ var userSchema = new Schema({
     password: {
         type: String,
         required: true
-    },
-    Parent: {
-        type: Boolean,
-        default: false
     }
 });
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Parent", parentSchema);
