@@ -15,15 +15,15 @@ angular.module("myApp", ["ngRoute"])
             controller: "AssignmentsController"
         })
 
-    .when("/signup", {
-        templateUrl: "auth/signup/signup.html",
-        controller: "SignUpController"
-    })
-
-    .when("/login", {
-            templateUrl: "auth/login/login.html",
-            controller: "LoginController"
-        })
+//    .when("/signup", {
+//        templateUrl: "auth/signup/signup.html",
+//        controller: "SignUpController"
+//    })
+//
+//    .when("/login", {
+//            templateUrl: "auth/login/login.html",
+//            controller: "LoginController"
+//        })
         .otherwise({
             redirectTo: "/home"
         })
