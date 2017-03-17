@@ -1,7 +1,4 @@
-//var app = angular.module("myApp", []);
-
-
-angular.module("myApp", ["ngRoute"])
+angular.module("myApp", ["ngRoute", "myApp.Auth"])
 
 .config(["$routeProvider", function ($routeProvider) {
 
@@ -14,16 +11,6 @@ angular.module("myApp", ["ngRoute"])
             templateUrl: "components/assignments/assignments.html",
             controller: "AssignmentsController"
         })
-
-//    .when("/signup", {
-//        templateUrl: "auth/signup/signup.html",
-//        controller: "SignUpController"
-//    })
-//
-//    .when("/login", {
-//            templateUrl: "auth/login/login.html",
-//            controller: "LoginController"
-//        })
         .otherwise({
             redirectTo: "/home"
         })

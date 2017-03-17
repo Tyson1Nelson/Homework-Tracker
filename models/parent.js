@@ -1,9 +1,13 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var userSchema = new Schema({
-    firstName: String,
-    lastName: String,
+var parentSchema = new Schema({
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+        lowercase: true
+    },
     email: {
         type: String,
         required: true,
@@ -13,11 +17,7 @@ var userSchema = new Schema({
     password: {
         type: String,
         required: true
-    },
-    admin: {
-        type: Boolean,
-        default: false
     }
 });
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Parent", parentSchema);

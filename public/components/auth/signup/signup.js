@@ -1,7 +1,20 @@
-angular.module("routingApp") 
+angular.module("myApp.Auth")
 
-.controller("SignUpController", ["$scope", function($scope){
+.controller("SignupController", ["$scope", "$location", "UserService", function ($scope, $location, UserService) {
+    $scope.passwordMessage = "";
 
-    $scope.name = "Sign Up";
-    
+    $scope.signup = function (user) {
+        if (user.password !== $scope.passwordRepeat) {
+            $scope.passwordMessage = "Passwords do not match!";
+        } else {
+            console.log(user);
+            console.log();
+            UserService.signup(user).then(function (response) {
+                $location.path("/login");
+            }, function (response) {
+                alert("There was a problem: " + JSON.stringify(response.data));
+            });
+        }
+    };
+
 }])
