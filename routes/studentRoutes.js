@@ -1,43 +1,45 @@
 var express = require("express");
 var studentRouter = express.Router();
 var Student = require("../models/student");
-//var Student = require()
 
 
 studentRouter.route("/")
     .get(function (req, res) {
-    console.log(req.user.assignments);
+        console.log(req.user.assignments);
+        //    console.log(req.body);
         Student.findById(req.user._id, function (err, student) {
             if (err) res.status(500).send(err);
-            res.send(student);
+            res.send(student.assignments);
         });
     })
     .post(function (req, res) {
-//        console.log(req.body.assignments)
-//        console.log(req.user.assignments);
-        console.log(req.user);
-        var student = new Student(req.user.assignments);
-//        student.user = req.user._id;
-        student.save(function (err, newStudent) {
-            if (err) res.status(500).send(err);
-            res.status(201).send(newStudent);
-        });
+        //        var assignment = new Student(req.user);
+        Student.findById(req.user._id, function (err, student) {
+            if (err) return res.status(500).send(err);
+            student.assignments.push(req.body);
+            student.save(function (err, newStudent) {
+                if (err) return res.status(500).send(err);
+                res.status(201).send(newStudent.assignments);
+            });
+        })
     });
 
-studentRouter.route("/:assignmentId")
-    .get(function (req, res) {
-        Student.findOne({user: req.user._id, _id: req.params.assignmentId}, function (err, assignment) {
-            if (err) res.status(500).send(err);
-            if (!assignment) res.status(404).send("No assignment item found.");
-            else res.send(assignment);
-        });
-    })
+studentRouter.route("/:studentId")
+    //    .get(function (req, res) {
+    //        Student.findById(req.params.studentId, function (err, student) {
+    //            if (err) res.status(500).send(err);
+    //            if (!student) res.status(404).send("No assignment found.");
+    //            else res.send(student);
+    //        });
+    //    })
 
-    .put(function (req, res) {
-        Student.findOneAndUpdate({user: req.user._id, _id: req.params.assignmentId}, req.body, {new: true}, function (err, assignment) {
-            if (err) res.status(500).send(err);
-            res.send(assignment);
-        });
+.put(function (req, res) {
+    Student.findByIdAndUpdate(req.body, {
+        new: true
+    }, function (err, student) {
+        if (err) res.status(500).send(err);
+        res.send(student.assignments);
     });
+});
 
 module.exports = studentRouter;

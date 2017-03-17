@@ -26,11 +26,11 @@ var assignmentSchema = new Schema({
     dueDate: {
         type: String
     },
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: "Child",
-        required: true
-    }
+//    user: {
+//        type: Schema.Types.ObjectId,
+//        ref: "Child",
+//        required: true
+//    }
 });
 
 var childSchema = new Schema({
@@ -41,7 +41,7 @@ var childSchema = new Schema({
         lowercase: true
     },
     email: {
-        type: String,
+        type: String, 
         required: true,
         unique: true,
         lowercase: true
