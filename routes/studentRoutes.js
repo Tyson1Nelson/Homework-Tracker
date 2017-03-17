@@ -5,7 +5,7 @@ var Student = require("../models/student");
 
 studentRouter.route("/")
     .get(function (req, res) {
-        // console.log(req.user.assignments);
+        // console.log(req.student.assignments);
         //    console.log(req.body);
         Student.findById(req.user._id, function (err, student) {
             if (err) res.status(500).send(err);
@@ -13,7 +13,7 @@ studentRouter.route("/")
         });
     })
     .post(function (req, res) {
-        // var assignment = new Student(req.user);
+        // var assignment = new Student(req.student);
         Student.findById(req.user._id, function (err, student) {
             if (err) return res.status(500).send(err);
             student.assignments.push(req.body);
@@ -25,21 +25,36 @@ studentRouter.route("/")
     });
 
 studentRouter.route("/:assignmentId")
-       // .get(function (req, res) {
-       //     Student.findById(req.params.studentId, function (err, student) {
-       //         if (err) res.status(500).send(err);
-       //         if (!student) res.status(404).send("No assignment found.");
-       //         else res.send(student);
-       //     });
-       // })
+   .get(function (req, res) {
+       Student.findById(req.user._id, function (err, student) {
+           if (err) return res.status(500).send(err);
+           var assignment = student.assignments.id(req.params.assignmentId);
+           res.send(assignment);
+       });
+   })
 
-        .put(function (req, res) {
-            Student.findByIdAndUpdate(req.body, {
-                new: true
-            }, function (err, student) {
-                if (err) res.status(500).send(err);
-                res.send(student.assignments);
+    .put(function (req, res) {
+        Student.findById(req.user._id, function (err, student) {
+            if (err) return res.status(500).send(err);
+            var assignment = student.assignments.id(req.params.assignmentId);
+
+            // Don't let students change the completed property
+            if (req.body.completed) {
+                delete req.body.completed;
+            }
+
+            for (var key in req.body) {
+                if (assignment.toObject().hasOwnProperty(key)) {
+                    assignment[key] = req.body[key] || assignment[key];
+                }
+            }
+
+            student.save(function(err) {
+                if (err) return res.status(500).send(err);
+                res.send(assignment);
             });
-});
+        });
+    });
+// });
 
 module.exports = studentRouter;
