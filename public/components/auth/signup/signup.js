@@ -7,8 +7,6 @@ angular.module("myApp.Auth")
         if (user.password !== $scope.passwordRepeat) {
             $scope.passwordMessage = "Passwords do not match!";
         } else {
-            console.log(user);
-            console.log();
             UserService.signup(user).then(function (response) {
                 $location.path("/login");
             }, function (response) {

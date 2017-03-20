@@ -1,2 +1,9 @@
 <h1>Assignments</h1>
-<h4 ng-repeat="assignment in assignments"> {{ assignment }} </h4>
+<div ng-repeat="assignment in assignments">
+    <h1>{{ assignment.username }}</h1>
+    <div ng-repeat="x in assignment.assignments">
+        <p> {{ x.name }} </p>
+        <p> {{ x.subject }} </p>
+        <p> {{ x.dueDate }} </p>
+    </div>
+</div>
