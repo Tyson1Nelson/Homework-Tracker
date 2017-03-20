@@ -1,0 +1,14 @@
+<h1>Your Children</h1>
+<br>
+
+<select ng-model="assignment.username">
+    <option value="" disabled selected>Students</option>
+    <option ng-repeat="user in users">{{ username }}</option>
+</select>
+
+<br>
+
+<a href="#/student-signup.html" class="btn btn-primary btn-lg">Create a Student</a>
+
+<br>
+<a href="#/students.html" class="btn btn-primary btn-lg">Edit Students</a>
