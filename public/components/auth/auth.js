@@ -1,32 +1,36 @@
 angular.module("myApp.Auth", ["ngRoute", "ngStorage"])
 
 .config(["$routeProvider", function ($routeProvider) {
-    
+
     $routeProvider
         .when("/signup", {
             templateUrl: "components/auth/signup/signup.html",
             controller: "SignupController"
         })
-        .when("/login", {
-            templateUrl: "components/auth/login/login.html",
+        .when("/parent-login", {
+            templateUrl: "components/auth/login/parent-login.html",
+            controller: "LoginController"
+        })
+        .when("/student-login", {
+            templateUrl: "components/auth/login/student-login.html",
             controller: "LoginController"
         })
         .when("/logout", {
-            template: "",  
+            template: "",
             controller: "LogoutController"
         });
 }])
 
 .service("TokenService", ["$localStorage", function ($localStorage) {
-    this.setToken = function(token) {
+    this.setToken = function (token) {
         $localStorage.token = token;
     };
 
-    this.getToken = function() {
+    this.getToken = function () {
         return $localStorage.token;
     };
 
-    this.removeToken = function() {
+    this.removeToken = function () {
         delete $localStorage.token;
     };
 }])
@@ -36,11 +40,11 @@ angular.module("myApp.Auth", ["ngRoute", "ngStorage"])
 
     this.user = $localStorage.user || {};
 
-    this.signup = function(user) {
+    this.signup = function (user) {
         return $http.post("/auth/signup", user);
     };
 
-    this.login = function(user) {
+    this.parentLogin = function (user) {
         return $http.post("/auth/login", user).then(function (response) {
             TokenService.setToken(response.data.token);
             $localStorage.user = response.data.user;
@@ -49,18 +53,27 @@ angular.module("myApp.Auth", ["ngRoute", "ngStorage"])
         });
     };
 
-    this.logout = function() {
+    this.studentLogin = function (user) {
+        return $http.post("/auth/login/student", user).then(function (response) {
+            TokenService.setToken(response.data.token);
+            $localStorage.user = response.data.user;
+            self.user = response.data.user;
+            return response.data;
+        });
+    };
+
+    this.logout = function () {
         TokenService.removeToken();
         $location.path("/home");
     };
-    this.isAuthenticated = function() {
+    this.isAuthenticated = function () {
         console.log("authenticated");
         return !!TokenService.getToken();
     };
 }])
 
 .service("AuthInterceptor", ["$q", "$location", "TokenService", function ($q, $location, TokenService) {
-    this.request = function(config) {
+    this.request = function (config) {
         var token = TokenService.getToken();
         if (token) {
             config.headers = config.headers || {};
@@ -70,7 +83,7 @@ angular.module("myApp.Auth", ["ngRoute", "ngStorage"])
         return config;
     };
 
-    this.responseError = function(response) {
+    this.responseError = function (response) {
         if (response.status === 401) {
             TokenService.removeToken();
             $location.path("/login");
