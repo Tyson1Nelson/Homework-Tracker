@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <h1>Create Assignment</h1>
+
+        <form>
+            <div class="form-group">
+                <label for="name">Assignment Name</label>
+                <input type="text" id="name" class="form-control" ng-model="assignment.username.name">
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" class="form-control" ng-model="assignment.username.subject">
+            </div>
+
+            <div class="form-group">
+                <label for="tasks">Tasks</label>
+                <input type="text" id="tasks" class="form-control" ng-model="assignment.username.tasks">
+            </div>
+
+            <div class="form-group">
+                <label for="notes">Notes</label>
+                <input type="text" id="notes" class="form-control" ng-model="assignment.username.notes">
+            </div>
+
+            <div class="form-group">
+                <label for="priority">Priority</label>
+                <input type="number" id="priority" class="form-control" ng-model="assignment.username.priority">
+            </div>
+
+            <div class="form-group">
+                <label for="due-date">Due Date</label>
+                <input type="date" id="due-date" class="form-control" ng-model="assignment.username.dueDate">
+            </div>
+
+            <button class="center-block btn btn-primary btn-lg" ng-click="createAssignment(assignment.username)">Add Assignment</button>
+        </form>
+    </div>
+</div>
