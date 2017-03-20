@@ -1,8 +1,8 @@
 <h1>Assignments</h1>
-<div ng-repeat="assignment in assignments">
-    <a href="#/create-assignment.html" class="btn btn-primary btn-lg">Create Assignment</a>
-    <h1>{{ assignment.username }}</h1>
-    <div ng-repeat="x in assignment.assignments">
+<div ng-repeat="student in students">
+    <button  ng-click="studentInfo(student)" class="btn btn-primary btn-lg">Create Assignment</button>
+    <h1>{{ student.username }}</h1>
+    <div ng-repeat="x in student.assignments">
         <p> {{ x.name }} </p>
         <p> {{ x.subject }} </p>
         <p> {{ x.dueDate }} </p>

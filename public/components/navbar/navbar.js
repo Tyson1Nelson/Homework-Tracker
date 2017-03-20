@@ -4,7 +4,11 @@ angular.module("myApp")
     return{
         templateUrl: "components/navbar/navbar.html",
         controller: function ($scope) {
-            $scope.userService = UserService
+            $scope.userService = UserService.isAuthenticated();
+            console.log($scope.userService);
+            
+            $scope.parent = UserService.user;
+            console.log($scope.parent);
         }
     }
 }]);
