@@ -1,7 +1,7 @@
 angular.module("myApp") 
 
-.controller("HomeController", ["$scope", function($scope){
+.controller("HomeController", ["$scope", "UserService", function($scope, UserService){
 
-    $scope.name = "Home";
+//    console.log(UserService.user);
     
 }])
