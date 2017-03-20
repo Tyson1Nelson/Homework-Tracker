@@ -20,7 +20,7 @@ angular.module("myApp")
 
 .controller("AssignmentsController", ["$scope", "$http", "AssignmentService", function ($scope, $http, AssignmentService) {
     $scope.assignment = {};
-    $scope.assignments = [];
+    $scope.assignments = ["hello", "goodbye", "see you around"];
 
 //    (function getAssignments() {
 //        AssignmentService.getAssignments().then(function (assignments) {
