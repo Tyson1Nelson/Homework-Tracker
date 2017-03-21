@@ -34,11 +34,9 @@ var assignmentSchema = new Schema({
 });
 
 var studentSchema = new Schema({
-    username: {
+    name: {
         type: String,
         required: true,
-        unique: true,
-        lowercase: true
     },
     email: {
         type: String, 

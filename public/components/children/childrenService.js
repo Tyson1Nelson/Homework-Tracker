@@ -8,12 +8,13 @@ angular.module("myApp")
         this.student = info;   
         $localStorage.student = info;
         console.log(info);
-        $location.path("/create-assignment");
+        $location.path("/assignments");
         
     };
 
     this.getStudents = function () {
-        return $http.get("/api/children").then(function (response) {
+        return $http.get("/api/students").then(function (response) {
+            console.log(response.data);
             return response.data;
         }, function (response) {
             alert("Error " + response.status + ": " + response.statusText);
@@ -26,11 +27,18 @@ angular.module("myApp")
 //            alert("Error " + response.status + ": " + response.statusText);
 //        });
 //    };
-    this.createAssignment = function (assignment) {
-        return $http.put("/api/children", assignment).then(function (response) {
+    this.createStudent = function (student) {
+        return $http.post("/api/students", student).then(function (response) {
             return response.data;
         }, function (response) {
             alert("Error " + response.status + ": " + response.statusText);
         });
     };
+//    this.createAssignment = function (assignment) {
+//        return $http.put("/api/children", assignment).then(function (response) {
+//            return response.data;
+//        }, function (response) {
+//            alert("Error " + response.status + ": " + response.statusText);
+//        });
+//    };
 }]);

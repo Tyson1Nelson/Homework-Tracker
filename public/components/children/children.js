@@ -6,10 +6,17 @@ angular.module("myApp")
     
 //    if ()
     ChildService.getStudents().then(function (response) {
+//        console.log(response);
         $scope.students = response;
     });
     $scope.studentInfo = function (info){
-        ChildService.showAssignments(info);
+        ChildService.studentInfo(info);
     };
+    $scope.signup = function (student){
+//        console.log(student);
+        ChildService.createStudent(student).then(function(response){
+            console.log(response);
+        })
+    }
 
 }]);
