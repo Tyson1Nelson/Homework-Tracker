@@ -33,7 +33,7 @@ app.use("/auth", require("./routes/studentAuthRoutes"));
 //     return res.status(403).send
 // }
 //
-app.use("/api/children", require("./routes/parentRoutes"));
+app.use("/api/students", require("./routes/parentRoutes"));
 app.use("/api/assignments", require("./routes/studentRoutes"));
 
 app.listen(port, function () {

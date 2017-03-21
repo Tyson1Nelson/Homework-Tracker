@@ -17,7 +17,8 @@ var parentSchema = new Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    isParent: Boolean
 });
 
 module.exports = mongoose.model("Parent", parentSchema);
