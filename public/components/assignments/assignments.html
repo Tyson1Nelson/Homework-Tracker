@@ -1,5 +1,4 @@
 <h1>Assignments</h1>
-
 <div>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#createAssignModal">Create
@@ -60,7 +59,9 @@
     </div>
 </div>
 
-<div style="overflow-x:auto;" ng-repeat="student in students">
+<h2>{{ student.name }}</h2>
+
+<div style="overflow-x:auto;">
     <table class="table">
         <thead>
         <th>Name</th>
