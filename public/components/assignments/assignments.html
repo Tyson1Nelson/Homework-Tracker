@@ -1,11 +1,45 @@
 <h1>Assignments</h1>
-<div ng-repeat="student in students">
-    <button  ng-click="studentInfo(student)" class="btn btn-primary btn-lg">Create Assignment</button>
-    <h1>{{ student.username }}</h1>
-    <div ng-repeat="x in student.assignments">
-        <p> {{ x.name }} </p>
-        <p> {{ x.subject }} </p>
-        <p> {{ x.dueDate }} </p>
-    </div>
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <h1>Create Assignment</h1>
+        <form>
+            <div class="form-group">
+                <label for="name">Assignment Name</label>
+                <input type="text" id="name" class="form-control" ng-model="assignment.name">
+            </div>
 
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" class="form-control" ng-model="assignment.subject">
+            </div>
+
+            <div class="form-group">
+                <label for="tasks">Tasks</label>
+                <input type="text" id="tasks" class="form-control" ng-model="assignment.tasks">
+            </div>
+
+            <div class="form-group">
+                <label for="notes">Notes</label>
+                <input type="text" id="notes" class="form-control" ng-model="assignment.notes">
+            </div>
+
+            <div class="form-group">
+                <label for="priority">Priority</label>
+                <input type="number" id="priority" class="form-control" ng-model="assignment.priority">
+            </div>
+
+            <div class="form-group">
+                <label for="due-date">Due Date</label>
+                <input type="date" id="due-date" class="form-control" ng-model="assignment.dueDate">
+            </div>
+
+            <button class="center-block btn btn-primary btn-lg" ng-click="createAssignment(assignment)">Add Assignment</button>
+        </form>
+    </div>
+</div>
+
+<div ng-repeat="assignment in student.assignments">
+    <h3>{{ assignment.name }}</h3>
+    <h4>{{ assignment.subject }}</h4>
+    <p>{{ assignment.dueDate }}</p>
 </div>

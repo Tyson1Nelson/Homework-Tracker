@@ -1,14 +1,19 @@
 angular.module("myApp")
 
-.controller("AssignmentsController", ["$scope", "AssignmentService", function ($scope, AssignmentService) {
-    //    $scope.assignment = {};
-    $scope.students = [];
+.controller("AssignmentsController", ["$scope", "AssignmentService", "ChildService", function ($scope, AssignmentService, ChildService) {
     
-    AssignmentService.getAssignments().then(function (response) {
-        $scope.students = response;
-    });
-    $scope.studentInfo = function (info){
-        AssignmentService.showAssignments(info);
+//    $scope.student = [];
+    $scope.student = ChildService.student;
+//    $scope.assignments = AssignmentService.showAssignments();
+    
+    
+    $scope.createAssignment = function (assignment) {
+        console.log(assignment);
+        console.log($scope.assignments);
+        $scope.student.push(assignment);
     };
+    
+    console.log($scope.assignments);
 
-}]);
+
+    }]);

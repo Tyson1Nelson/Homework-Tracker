@@ -10,7 +10,8 @@
                 <li class="color-text" ng-show="userService"><a href="#/assignments">Assignments</a></li>
                 <li class="color-text" ng-hide="userService"><a href="#/signup">Sign Up</a></li>
                 <li class="color-text" ng-hide="userService"><a href="#/login">Login</a></li>
-                <li class="color-text" ng-if="parent.isParent === true"><a href="#/login">See Students</a></li>
+                <li class="color-text" ng-show="userService"><a href="#/logout">Logout</a></li>
+                <li class="color-text" ng-if="parent.isParent === true"><a href="#/children">See Students</a></li>
 
             </ul>
 

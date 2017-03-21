@@ -1,7 +1,7 @@
 angular.module("myApp")
 
-.controller("CreateAssignmentsController", ["$scope", "AssignmentService", function ($scope, AssignmentService) {
-    $scope.student = AssignmentService.student;
+.controller("CreateAssignmentsController", ["$scope", "AssignmentService", "ChildService", function ($scope, AssignmentService, ChildService) {
+    $scope.student = ChildService.student;
     $scope.createAssignment = function (assignment) {
         console.log(assignment);
     };
