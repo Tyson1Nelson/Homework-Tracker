@@ -1,3 +1,5 @@
+// controllers to be added to assignments.js
+
 angular.module("myApp")
 
 .controller("CreateAssignmentsController", ["$scope", "AssignmentService", function ($scope, AssignmentService) {

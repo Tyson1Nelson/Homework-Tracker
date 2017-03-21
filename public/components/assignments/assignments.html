@@ -52,25 +52,13 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-default btn-primary" data-dismiss="modal">Add Assignment</button>
+                    <button type="submit" class="btn btn-default btn-primary" data-dismiss="modal" ng-click="createAssignment(assignment)">Add Assignment</button>
                 </div>
             </div>
 
         </div>
     </div>
 </div>
-
-
-<!--<div ng-repeat="student in students">-->
-    <!--<h1>{{ student.username }}</h1>-->
-    <!--<table class="table" ng-repeat="x in student.assignments">-->
-        <!--<tr>-->
-            <!--<td> {{ x.name }} </td>-->
-            <!--<td> {{ x.subject }} </td>-->
-            <!--<td> {{ x.dueDate }} </td>-->
-        <!--</tr>-->
-    <!--</table>-->
-<!--</div>-->
 
 <div style="overflow-x:auto;" ng-repeat="student in students">
     <table class="table">
@@ -81,10 +69,11 @@
         <th>View/Edit</th>
         </thead>
         <tr ng-repeat="x in student.assignments">
-            <td> {{ x.name }} </td>
-            <td> {{ x.subject }} </td>
-            <td> {{ x.dueDate }} </td>
-            <td><span class="glyphicon glyphicon-eye-open"></span> &nbsp; <span class="glyphicon glyphicon-pencil"></span> </td>
+            <td> {{ x.name }}</td>
+            <td> {{ x.subject }}</td>
+            <td> {{ x.dueDate }}</td>
+            <td><span class="glyphicon glyphicon-eye-open"></span> &nbsp; <span
+                    class="glyphicon glyphicon-pencil"></span></td>
         </tr>
     </table>
 </div>
