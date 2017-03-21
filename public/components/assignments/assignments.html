@@ -1,9 +1,7 @@
 <h1>Assignments</h1>
 <div>
-    <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#createAssignModal">Create
-        Assignment
-    </button>
+    <!-- Trigger the create assignment modal with a button -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#createAssignModal">Create Assignment</button>
 
     <!-- Modal -->
     <div id="createAssignModal" class="modal fade" role="dialog">
@@ -74,8 +72,8 @@
             <td> {{ assignment.name }}</td>
             <td> {{ assignment.subject }}</td>
             <td> {{ assignment.dueDate }}</td>
-            <td><span class="glyphicon glyphicon-eye-open"></span></td>
-            <td><span class="glyphicon glyphicon-pencil"></span></td>
+            <td><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#viewAssignModal"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+            <td><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#editAssignModal"><span class="glyphicon glyphicon-pencil"></span></button></td>
         </tr>
     </table>
 </div>
