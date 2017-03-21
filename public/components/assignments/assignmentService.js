@@ -11,14 +11,14 @@ angular.module("myApp")
     };
 
     this.getAssignments = function () {
-        return $http.get("/api/children").then(function (response) {
+        return $http.get("/api/students").then(function (response) {
             return response.data;
         }, function (response) {
             alert("Error " + response.status + ": " + response.statusText);
         });
     };
     this.createAssignment = function (assignment) {
-        return $http.put("/api/children", assignment).then(function (response) {
+        return $http.put("/api/students", assignment).then(function (response) {
             return response.data;
         }, function (response) {
             alert("Error " + response.status + ": " + response.statusText);
