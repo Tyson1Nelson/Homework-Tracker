@@ -64,6 +64,7 @@ angular.module("myApp.Auth", ["ngRoute", "ngStorage"])
 
     this.logout = function () {
         TokenService.removeToken();
+        delete $localStorage.user;
         $location.path("/home");
     };
     this.isAuthenticated = function () {

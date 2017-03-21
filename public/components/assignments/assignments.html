@@ -69,10 +69,10 @@
         <th>View</th>
         <th>Edit</th>
         </thead>
-        <tr ng-repeat="x in student.assignments">
-            <td> {{ x.name }}</td>
-            <td> {{ x.subject }}</td>
-            <td> {{ x.dueDate }}</td>
+        <tr ng-repeat="assignment in student.assignments">
+            <td> {{ assignment.name }}</td>
+            <td> {{ assignment.subject }}</td>
+            <td> {{ assignment.dueDate }}</td>
             <td><span class="glyphicon glyphicon-eye-open"></span></td>
             <td><span class="glyphicon glyphicon-pencil"></span></td>
         </tr>
