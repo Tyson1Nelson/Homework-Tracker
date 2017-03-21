@@ -1,47 +1,47 @@
 var express = require("express");
 var parentRoute = express.Router();
-var Children = require("../models/student");
+var Student = require("../models/student");
 
 parentRoute.route("/")
     .get(function (req, res) {
     console.log(req.body);
-        Children.find({parent: req.user._id}, function (err, children) {
+        Student.find({parent: req.user._id}, function (err, student) {
 //        console.log(user);
             
             if (err) res.status(500).send(err);
-            res.send(children);
+            res.send(student);
         });
     })
 
     .post(function (req, res) {
-        var child = new Children(req.body);
-        child.parent = req.user._id;
-        child.save(function (err, newChild) {
+        var student = new Student(req.body);
+        student.parent = req.user._id;
+        student.save(function (err, newStudent) {
             if (err) res.status(500).send(err);
-            res.status(201).send(newChild);
+            res.status(201).send(newStudent);
         });
     });
 
-parentRoute.route("/:childId")
+parentRoute.route("/:studentId")
     .get(function (req, res) {
-        Children.findOne({_id: req.params.childId, parent: req.user._id}, function (err, child) {
+        Student.findOne({_id: req.params.studentId, parent: req.user._id}, function (err, student) {
             if (err) res.status(500).send(err);
-            if (!child) res.status(404).send("No child item found.");
-            else res.send(child);
+            if (!student) res.status(404).send("No student item found.");
+            else res.send(student);
         });
     })
 
     .put(function (req, res) {
-        Children.findOneAndUpdate({_id: req.params.childId, parent: req.user._id}, req.body, {new: true}, function (err, child) {
+        Student.findOneAndUpdate({_id: req.params.studentId, parent: req.user._id}, req.body, {new: true}, function (err, student) {
             if (err) res.status(500).send(err);
-            res.send(child);
+            res.send(student);
         });
     })
 
     .delete(function (req, res) {
-        Children.findOneAndRemove({_id: req.params.childId, parent: req.user._id}, function (err, child) {
+        Student.findOneAndRemove({_id: req.params.studentId, parent: req.user._id}, function (err, student) {
             if (err) res.status(500).send(err);
-            res.send(child);
+            res.send(student);
         });
     });
 

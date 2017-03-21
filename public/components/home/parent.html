@@ -1,14 +1,54 @@
-<h1>Your Children</h1>
+<h1>Your Students</h1>
 <br>
+<div>
+    <select ng-model="student.username">
+        <option value="" disabled selected>Students by Username</option>
+        <option ng-repeat="student in students">{{ username }}</option>
+    </select>
+</div>
 
-<select ng-model="assignment.username">
-    <option value="" disabled selected>Students</option>
-    <option ng-repeat="user in users">{{ username }}</option>
-</select>
+<div ng-repeat="student in students">
 
-<br>
+    <!--Old button-->
+    <!--<button  ng-click="studentInfo(student)" class="btn btn-primary btn-lg">Create Assignment</button>-->
 
-<a href="#/student-signup.html" class="btn btn-primary btn-lg">Create a Student</a>
+
+    <h1>{{ student.username }}</h1>
+    <div ng-repeat="x in student.assignments">
+        <p> {{ x.name }} </p>
+        <p> {{ x.subject }} </p>
+        <p> {{ x.dueDate }} </p>
+    </div>
+
+</div>
+
+
+<div>
+
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 <br>
 <a href="#/students.html" class="btn btn-primary btn-lg">Edit Students</a>
