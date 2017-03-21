@@ -1,7 +1,21 @@
-<h1>Assignments</h1>
-<div ng-repeat="student in students">
-    <button  ng-click="studentInfo(student)" class="btn btn-primary btn-lg">Create Assignment</button>
-    <h1>{{ student.username }}</h1>
+<h1>Your Students</h1>
+<br>
+<!--
+<div>
+    <select ng-model="students">
+        <option value="" disabled selected>Students by Name</option>
+        <option ng-repeat="student in students">{{ name }}</option>
+    </select>
+</div>
+-->
+
+<div ng-repeat="student in students" ng-click="studentInfo(student)">
+
+    <!--Old button-->
+<!--    <button  ng-click="studentInfo(student)" class="btn btn-primary btn-lg">Create Assignment</button>-->
+
+
+    <h1>{{ student.name }}</h1>
     <div ng-repeat="x in student.assignments">
         <p> {{ x.name }} </p>
         <p> {{ x.subject }} </p>
@@ -9,3 +23,57 @@
     </div>
 
 </div>
+
+
+<div>
+
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Add Student </button>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Student</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+            <div class="form-group">
+                <label for="student">Student Name</label>
+                <input type="text" id="first-name" class="form-control" ng-model="student.name">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control" ng-model="student.email">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control" ng-model="student.password">
+            </div>
+
+            <div class="form-group">
+                <label for="passwordRepeat">Repeat Password</label>
+                <input type="password" id="passwordRepeat" class="form-control" ng-model="passwordRepeat">
+                <span class="text-danger" ng-show="passwordMessage">{{passwordMessage}}</span>
+            </div>
+            
+            <button class="center-block btn btn-primary btn-lg" ng-click="signup(student)">Signup</button>
+        </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<br>
+<a href="#/students.html" class="btn btn-primary btn-lg">Edit Students</a>
