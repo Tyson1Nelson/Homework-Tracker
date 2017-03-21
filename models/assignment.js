@@ -28,7 +28,7 @@
 //    },
 //    user: {
 //        type: Schema.Types.ObjectId,
-//        ref: "Child",
+//        ref: "Student",
 //        required: true
 //    }
 //});
