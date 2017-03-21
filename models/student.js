@@ -28,12 +28,12 @@ var assignmentSchema = new Schema({
     },
 //    user: {
 //        type: Schema.Types.ObjectId,
-//        ref: "Child",
+//        ref: "Student",
 //        required: true
 //    }
 });
 
-var childSchema = new Schema({
+var studentSchema = new Schema({
     username: {
         type: String,
         required: true,
@@ -57,4 +57,4 @@ var childSchema = new Schema({
     assignments: [ assignmentSchema ]
 });
 
-module.exports = mongoose.model("Child", childSchema);
+module.exports = mongoose.model("Student", studentSchema);
