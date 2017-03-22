@@ -1,6 +1,6 @@
 angular.module("myApp")
 
-.service("AssignmentService", ["$http", "$location", "$localStorage", function ($http, $location, $localStorage) {
+.service("ParentService", ["$http", "$location", "$localStorage", function ($http, $location, $localStorage) {
 
     this.student = $localStorage.student || {};
 

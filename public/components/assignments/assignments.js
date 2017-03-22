@@ -29,6 +29,27 @@ angular.module("myApp")
         }
     };
     console.log($scope.student);
-
+    
+    $scope.editAssignment = function (assignment){
+        console.log(assignment);
+//        console.log($scope.student.assignments[index])
+    }
+    $scope.edit = function (assignment, x){
+//        console.log(assignment);
+        console.log(x);
+        $scope.changeAssignment = assignment;
+        $scope.assignment = assignment;
+        var index = $scope.student.assignments.indexOf(assignment);
+        console.log($scope.student.assignments[index]._id)
+        console.log($scope.changeAssignment);
+        $scope.student.assignments[index] = $scope.changeAssignment;
+        
+        
+    }
+    $scope.delete = function (assignment){
+        var index = $scope.student.assignments.indexOf(assignment);
+        
+        $scope.student.assignments.splice(index, 1);
+    }
 
     }]);
