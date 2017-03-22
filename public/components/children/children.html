@@ -9,19 +9,15 @@
 </div>
 -->
 
-<div ng-repeat="student in students" ng-click="studentInfo(student)">
+<div ng-repeat="student in students" >
 
     <!--Old button-->
 <!--    <button  ng-click="studentInfo(student)" class="btn btn-primary btn-lg">Create Assignment</button>-->
 
 
-    <h1>{{ student.name }}</h1>
-    <!--<div ng-repeat="x in student.assignments">-->
-        <!--<p> {{ x.name }} </p>-->
-        <!--<p> {{ x.subject }} </p>-->
-        <!--<p> {{ x.dueDate }} </p>-->
-    <!--</div>-->
-
+    <h1 ng-click="studentInfo(student)">{{ student.name }}</h1>
+    <button type="button" class="btn btn-primary btn-lg">edit</button>
+    
 </div>
 
 

@@ -36,12 +36,12 @@ angular.module("myApp")
         
     }
     
-//    $scope.editAssignment = function (assignment){
-//        console.log(assignment);
-//        console.log($scope.student.assignments[index])
-//    }
+    $scope.editAssignment = function (assignment){
+        console.log(assignment);
+        console.log($scope.student.assignments[index])
+    }
     $scope.edit = function (assignment, x){
-//        console.log(assignment);
+        console.log(assignment);
         console.log(x);
         $scope.changeAssignment = assignment;
         $scope.assignment = assignment;
