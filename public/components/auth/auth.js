@@ -65,10 +65,11 @@ angular.module("myApp.Auth", ["ngRoute", "ngStorage"])
     this.logout = function () {
         TokenService.removeToken();
         delete $localStorage.user;
+        this.user = null;
+        delete $localStorage.student;
         $location.path("/home");
     };
     this.isAuthenticated = function () {
-        console.log("authenticated");
         return !!TokenService.getToken();
     };
 }])
@@ -80,7 +81,6 @@ angular.module("myApp.Auth", ["ngRoute", "ngStorage"])
             config.headers = config.headers || {};
             config.headers.Authorization = "Bearer " + token;
         }
-        config.headers.bob = "Not really";
         return config;
     };
 
