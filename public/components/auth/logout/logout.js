@@ -1,5 +1,7 @@
 angular.module("myApp.Auth")
 
-.controller("LogoutController", ["UserService", function (UserService) {
+.controller("LogoutController", ["UserService", "ChildService", function (UserService, ChildService) {
+    ChildService.reset();
     UserService.logout();
+    
 }]);

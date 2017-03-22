@@ -8,11 +8,20 @@
             <ul class="nav navbar-nav">
                 <li class="active color-text"><a href="#/home">Home <span class="sr-only">(current)</span></a></li>
 
-                <li class="color-text" ng-show="userService"><a href="#/assignments">Assignments</a></li>
-                <li class="color-text" ng-hide="userService"><a href="#/signup">Sign Up</a></li>
-                <li class="color-text" ng-hide="userService"><a href="#/login">Login</a></li>
-                <li class="color-text" ng-show="userService"><a href="#/logout">Logout</a></li>
-                <li class="color-text" ng-if="parent.isParent === true"><a href="#/children">See Students</a></li>
+                <li class="color-text" ng-show="userService.user.parent.length > 0"><a href="#/assignments">Assignments</a></li>
+                <li class="color-text" ng-hide="userService.isAuthenticated()"><a href="#/signup">Sign Up</a></li>
+                <li class="color-text" ng-hide="userService.isAuthenticated()"><a href="#/login">Login</a></li>
+                <li class="color-text" ng-show="userService.isAuthenticated()"><a href="#/logout">Logout</a></li>
+                <li class="color-text" ng-show="userService.user.isParent === true"><a href="#/children">See Students</a></li>
+                
+<!--
+                <li class="color-text" ng-show="userService.user.parent.length > 0"><a href="#/assignments">Assignments</a></li>
+                <li class="color-text" ><a href="#/signup">Sign Up</a></li>
+                <li class="color-text" ><a href="#/login">Login</a></li>
+                <li class="color-text" ><a href="#/logout">Logout</a></li>
+                <li class="color-text" ng-show="userService.user.isParent === true"><a href="#/children">See Students</a></li>
+-->
+                
 
             </ul>
 
