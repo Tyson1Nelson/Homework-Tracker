@@ -6,7 +6,7 @@
     <!-- Trigger the create assignment modal with a button -->
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#createAssignModal">Create Assignment</button>
 
-    <!-- Modal -->
+    <!-- Create Assignment Modal -->
     <div id="createAssignModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -73,8 +73,8 @@
             <td> {{ assignment.name }}</td>
             <td> {{ assignment.subject }}</td>
 			<td> {{ assignment.dueDate | date: 'shortDate'}}</td>
-            <td><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#viewAssignModal"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-            <td><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#editAssignModal"><span class="glyphicon glyphicon-pencil"></span></button></td>
+            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewAssignModal"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editAssignModal"><span class="glyphicon glyphicon-pencil"></span></button></td>
         </tr>
 <!--
         <tr class="overDue" ng-if="assignment.dueDate < today" ng-repeat="assignment in student.assignments | orderBy: 'dueDate' track by $index">
