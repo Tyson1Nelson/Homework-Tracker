@@ -6,7 +6,7 @@
     <!-- Trigger the create assignment modal with a button -->
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#createAssignModal">Create Assignment</button>
 
-    <!-- Modal -->
+    <!-- Create Assignment Modal -->
     <div id="createAssignModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -55,8 +55,47 @@
                     <button type="submit" class="btn btn-default btn-primary" data-dismiss="modal" ng-click="createAssignment(assignment)">Add Assignment</button>
                 </div>
             </div>
+            <div class="modal-body">
+                <form role="form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Assignment Name</label>
+                            <input type="text" id="name" class="form-control" ng-model="assignment.name">
+                        </div>
 
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" ng-model="assignment.subject">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tasks">Tasks</label>
+                            <input type="text" id="tasks" class="form-control" ng-model="assignment.tasks">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notes">Notes</label>
+                            <input type="text" id="notes" class="form-control" ng-model="assignment.notes">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="priority">Priority</label>
+                            <input type="number" id="priority" class="form-control" ng-model="assignment.priority">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="due-date">Due Date</label>
+                            <input type="date" id="due-date" class="form-control" ng-model="assignment.dueDate">
+                        </div>
+                    </form>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-default btn-primary" data-dismiss="modal" ng-click="createAssignment(assignment)">Add Assignment
+                </button>
+            </div>
         </div>
+
     </div>
 </div>
 <!--<h1>{{student.name}}</h1>-->
@@ -73,11 +112,18 @@
         <tr ng-repeat="assignment in student.assignments | orderBy: 'dueDate' track by $index">
             <td> {{ assignment.name }}</td>
             <td> {{ assignment.subject }}</td>
-			<td> {{ assignment.dueDate | date: 'shortDate'}}</td>
-            <td><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#viewAssignModal"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-            <td><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#editAssignModal" ng-click="edit(assignment, $index)"><span class="glyphicon glyphicon-pencil"></span></button></td>
-            <td ng-if="isParent === true"><button type="button" class="btn btn-danger btn-lg" ng-click="delete(assignment)"><span class="glyphicon glyphicon-trash"></span></button></td>
-            
+            <td> {{ assignment.dueDate | date: 'shortDate'}}</td>
+            <!-- Trigger the view assignment modal with a button -->
+            <td>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewAssignModal">
+                    <span class="glyphicon glyphicon-eye-open"></span></button>
+            </td>
+            <!-- Trigger the edit assignment modal with a button -->
+            <td>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editAssignModal">
+                    <span class="glyphicon glyphicon-pencil"></span></button>
+            </td>
+
         </tr>
 <!--
         <tr class="overDue" ng-if="assignment.dueDate < today" ng-repeat="assignment in student.assignments | orderBy: '-dueDate' track by $index">
@@ -91,6 +137,62 @@
     </table>
 </div>
 
+<!-- View Assignment Modal -->
+<div id="viewAssignModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Current Assignment</h4>
+
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Assignment Name</label>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tasks">Tasks</label>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notes">Notes</label>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="priority">Priority</label>
+
+                        </div>
+
+<!--
+                        <div class="form-group">
+                            <label for="due-date">Due Date</label>
+
+                        </div>
+-->
+                    </form>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+
+    </div>
+</div>
 <!-- Edit Assignment Modal -->
 <div id="editAssignModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -145,3 +247,4 @@
 
     </div>
 </div>
+

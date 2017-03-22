@@ -52,4 +52,19 @@ angular.module("myApp")
         $scope.student.assignments.splice(index, 1);
     }
 
+    }])
+
+.controller('viewAssignmentController', ["$scope", "AssignmentService", function ($scope, AssignmentView){
+
+        AssignmentView.query(function(response){
+            $scope.showAssignments = response.results;
+        });
+
+           $scope.showAssignments = function(objectId){
+            $scope.modalOn = true;
+             $scope.modal = AssignmentView.get({ showAssignments: objectId });
+
+             console.log($scope.modal)
+        }
+
     }]);
