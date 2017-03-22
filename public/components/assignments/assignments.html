@@ -74,12 +74,14 @@
                 <td ng-style="{color: 'red'}"> {{ assignment.subject }}</td>
                 <td ng-style="{color: 'red'}"> {{ assignment.dueDate | date: 'shortDate'}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewAssignModal"><span class="glyphicon glyphicon-eye-open"></span></button>
+                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewAssignModal" ng-click="seeAssignments(assignment)">
+                        <span class="glyphicon glyphicon-eye-open"></span></button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editAssignModal"><span class="glyphicon glyphicon-pencil"></span></button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editAssignModal" ng-click="edit(assignment)">
+                        <span class="glyphicon glyphicon-pencil"></span></button>
                 </td>
-                <td>
+                 <td ng-if="isParent === true">
                     <button type="button" class="btn btn-danger" ng-click="delete(assignment)">
                         <span class="glyphicon glyphicon-trash"></span></button>
                 </td>
@@ -100,7 +102,7 @@
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editAssignModal" ng-click="edit(assignment)">
                         <span class="glyphicon glyphicon-pencil"></span></button>
                 </td>
-                <td>
+                <td ng-if="isParent === true">
                     <button type="button" class="btn btn-danger" ng-click="delete(assignment)">
                         <span class="glyphicon glyphicon-trash"></span></button>
                 </td>

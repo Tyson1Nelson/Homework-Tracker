@@ -19,7 +19,8 @@ angular.module("myApp")
         $scope.isParent = true;
         $scope.student = ChildService.student;
     }
-
+    
+    console.log($scope.isParent);
     $scope.createAssignment = function (assignment) {
         $scope.student.assignments.push(assignment);
         if (ChildService.student._id === undefined) {
@@ -32,6 +33,7 @@ angular.module("myApp")
     
     $scope.seeAssignments = function (assignment){
         console.log(assignment)
+        console.log("assignment")
         $scope.showAssignment = assignment;
         
     }
