@@ -1,8 +1,8 @@
+
 <h5>Today's Date: {{ date | date: 'shortDate' }}</h5>
 <h1 ng-show="isParent">{{ student.name }}'s Assignments</h1>
 <h1 ng-hide="isParent">Hello {{ student.name }}</h1>
 <!--<h1>{{student.assignments}}</h1>-->
-
 <div>
 
     <!-- Trigger the create assignment modal with a button -->
@@ -154,7 +154,6 @@
     </div>
 </div>
 
-
 <!-- Edit Assignment Modal -->
 <div id="editAssignModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -206,6 +205,5 @@
                 </button>
             </div>
         </div>
-
     </div>
 </div>
