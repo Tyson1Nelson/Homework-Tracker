@@ -1,9 +1,12 @@
-<h1>Assignments</h1>
-<div>
+<h5>Today's Date: {{ date | date: 'shortDate' }}</h5>
+<h1 ng-show="isParent">{{ student.name }}'s Assignments</h1>
+<h1 ng-hide="isParent">Hello {{ student.name }}</h1>
+<!--<h1>{{student.assignments}}</h1>--><div>
+
     <!-- Trigger the create assignment modal with a button -->
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#createAssignModal">Create Assignment</button>
 
-    <!-- Modal -->
+    <!-- Create Assignment Modal -->
     <div id="createAssignModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -56,25 +59,32 @@
         </div>
     </div>
 </div>
-
-<h2>{{ student.name }}</h2>
-
+<!--<h1>{{student.name}}</h1>-->
 <div style="overflow-x:auto;">
     <table class="table">
         <thead>
-        <th>Name</th>
-        <th>Subject</th>
-        <th>Due Date</th>
-        <th>View</th>
-        <th>Edit</th>
+            <th>Name</th>
+            <th>Subject</th>
+            <th>Due Date</th>
+            <th>View</th>
+            <th>Edit</th>
         </thead>
-        <tr ng-repeat="assignment in student.assignments">
+        <tr ng-repeat="assignment in student.assignments | orderBy: 'dueDate' track by $index">
             <td> {{ assignment.name }}</td>
             <td> {{ assignment.subject }}</td>
-            <td> {{ assignment.dueDate }}</td>
-            <td><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#viewAssignModal"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-            <td><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#editAssignModal"><span class="glyphicon glyphicon-pencil"></span></button></td>
+			<td> {{ assignment.dueDate | date: 'shortDate'}}</td>
+            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewAssignModal"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editAssignModal"><span class="glyphicon glyphicon-pencil"></span></button></td>
         </tr>
+<!--
+        <tr class="overDue" ng-if="assignment.dueDate < today" ng-repeat="assignment in student.assignments | orderBy: 'dueDate' track by $index">
+            <td ng-style="{color: 'red'}"> {{ assignment.name }}</td>
+            <td ng-style="{color: 'red'}"> {{ assignment.subject }}</td>
+            <td ng-style="{color: 'red'}"> {{ assignment.dueDate | date: 'shortDate'}}</td>
+            <td><span class="glyphicon glyphicon-eye-open"></span></td>
+            <td><span class="glyphicon glyphicon-pencil"></span></td>
+        </tr>
+-->
     </table>
 </div>
 

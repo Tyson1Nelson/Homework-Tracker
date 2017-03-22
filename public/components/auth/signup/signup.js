@@ -8,7 +8,7 @@ angular.module("myApp.Auth")
             $scope.passwordMessage = "Passwords do not match!";
         } else {
             UserService.signup(user).then(function (response) {
-                $location.path("/login");
+                $location.path("/parent-login");
             }, function (response) {
                 alert("There was a problem: " + JSON.stringify(response.data));
             });
