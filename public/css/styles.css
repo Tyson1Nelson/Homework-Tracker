@@ -9,6 +9,10 @@ h1 {
     text-align: center;
 }
 
+.student-name:hover {
+    color: #F53240;
+}
+
 h3 {
     color: #ffff;
     font-family: 'Open Sans Condensed', sans-serif;
@@ -28,6 +32,10 @@ p {
 .jumbotron {
     background-color: #7CDBDS;
     margin-bottom: none;
+}
+
+.container {
+    padding-right: 10px;
 }
 
 .form-control {
