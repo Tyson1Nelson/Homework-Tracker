@@ -19,7 +19,8 @@ angular.module("myApp")
         $scope.isParent = true;
         $scope.student = ChildService.student;
     }
-
+    
+    console.log($scope.isParent);
     $scope.createAssignment = function (assignment) {
         $scope.student.assignments.push(assignment);
         if (ChildService.student._id === undefined) {
@@ -29,7 +30,36 @@ angular.module("myApp")
         }
     };
     console.log($scope.student);
-
+    
+    $scope.seeAssignments = function (assignment){
+        console.log(assignment)
+        console.log("assignment")
+        $scope.showAssignment = assignment;
+        
+    }
+    
+    $scope.editAssignment = function (assignment){
+        console.log(assignment);
+        console.log($scope.student.assignments[index])
+    }
+    $scope.edit = function (assignment, x){
+        console.log(assignment);
+        console.log(x);
+        $scope.changeAssignment = assignment;
+        $scope.assignment = assignment;
+        var index = $scope.student.assignments.indexOf(assignment);
+        console.log($scope.student.assignments[index]._id)
+        console.log($scope.changeAssignment);
+        $scope.student.assignments[index] = $scope.changeAssignment;
+        
+        
+    }
+    $scope.delete = function (assignment){
+        var index = $scope.student.assignments.indexOf(assignment);
+        
+        $scope.student.assignments.splice(index, 1);
+        console.log($scope.student.assignments);
+    }
 
     }])
 

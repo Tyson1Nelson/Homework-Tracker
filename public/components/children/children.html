@@ -1,16 +1,18 @@
 <div class="container">
-    <h1>Your Students</h1>
+    <h1><b><u>Your Students</u></b></h1>
 
     <br>
-
-    <div ng-repeat="student in students" ng-click="studentInfo(student)">
-        <h1>{{ student.name }}</h1>
-    </div>
-
-    <div>
-        <!-- Trigger the modal with a button -->
+    <!-- Trigger the modal with a button -->
         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Add Student </button>
 
+
+    <div ng-repeat="student in students" >
+    	<h1 ng-click="studentInfo(student)">{{ student.name }}</h1>
+    	<button type="button" class="btn btn-primary btn-lg">edit</button>  
+	</div>
+
+    <div>
+        
         <!-- Modal -->
         <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -55,5 +57,5 @@
             </div>
         </div>
     </div>
-    <a href="#/students.html" class="btn btn-primary btn-lg">Edit Students</a>
+<!--    <a href="#/students.html" class="btn btn-primary btn-lg">Edit Students</a>-->
 </div>
