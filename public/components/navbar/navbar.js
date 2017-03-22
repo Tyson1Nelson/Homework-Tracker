@@ -4,16 +4,16 @@ angular.module("myApp")
     return{
         templateUrl: "components/navbar/navbar.html",
         controller: function ($scope) {
-            $scope.userService = UserService.isAuthenticated();
-            console.log($scope.userService);
+            $scope.userService = UserService;
+//            console.log($scope.userService.user.parent.length);
             
-            $scope.parent = UserService.user;
-            console.log($scope.parent);
+//            $scope.user = UserService.user;
+//            console.log($scope.user);
         }
     }
 }]);
 
-$(".nav a").on("click", function(){
-   $(".nav").find(".active").removeClass("active");
-   $(this).parent().addClass("active");
-});
+//$(".nav a").on("click", function(){
+//   $(".nav").find(".active").removeClass("active");
+//   $(this).parent().addClass("active");
+//});
