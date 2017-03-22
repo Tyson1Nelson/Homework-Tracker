@@ -1,23 +1,9 @@
 <h1>Your Students</h1>
 <br>
-<!--
-<div>
-    <select ng-model="students">
-        <option value="" disabled selected>Students by Name</option>
-        <option ng-repeat="student in students">{{ name }}</option>
-    </select>
-</div>
--->
 
 <div ng-repeat="student in students" >
-
-    <!--Old button-->
-<!--    <button  ng-click="studentInfo(student)" class="btn btn-primary btn-lg">Create Assignment</button>-->
-
-
     <h1 ng-click="studentInfo(student)">{{ student.name }}</h1>
-    <button type="button" class="btn btn-primary btn-lg">edit</button>
-    
+    <button type="button" class="btn btn-primary btn-lg">edit</button>  
 </div>
 
 
