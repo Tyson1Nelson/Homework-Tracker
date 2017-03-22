@@ -30,10 +30,16 @@ angular.module("myApp")
     };
     console.log($scope.student);
     
-    $scope.editAssignment = function (assignment){
-        console.log(assignment);
-//        console.log($scope.student.assignments[index])
+    $scope.seeAssignments = function (assignment){
+        console.log(assignment)
+        $scope.showAssignment = assignment;
+        
     }
+    
+//    $scope.editAssignment = function (assignment){
+//        console.log(assignment);
+//        console.log($scope.student.assignments[index])
+//    }
     $scope.edit = function (assignment, x){
 //        console.log(assignment);
         console.log(x);
@@ -50,6 +56,7 @@ angular.module("myApp")
         var index = $scope.student.assignments.indexOf(assignment);
         
         $scope.student.assignments.splice(index, 1);
+        console.log($scope.student.assignments);
     }
 
     }])
