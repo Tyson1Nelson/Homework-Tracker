@@ -31,4 +31,19 @@ angular.module("myApp")
     console.log($scope.student);
 
 
+    }])
+
+.controller('viewAssignmentController', ["$scope", "AssignmentService", function ($scope, AssignmentView){
+
+        AssignmentView.query(function(response){
+            $scope.showAssignments = response.results;
+        });
+
+           $scope.showAssignments = function(objectId){
+            $scope.modalOn = true;
+             $scope.modal = AssignmentView.get({ showAssignments: objectId });
+
+             console.log($scope.modal)
+        }
+
     }]);

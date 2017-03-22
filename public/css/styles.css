@@ -63,7 +63,11 @@ p {
     color: #ffffff;
     font-family: 'Abel', sans-serif;
 }
- 
+
+.btn-lg {
+    padding: 14px 24px;
+}
+
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
     background: #F53240;
 }
