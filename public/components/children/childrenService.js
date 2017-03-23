@@ -67,6 +67,17 @@ angular.module("myApp")
             alert("Error " + response.status + ": " + response.statusText);
         });
     };
+    
+    this.delete = function (student) {
+        console.log(student.assignments);
+        return $http.put("/api/students/" + student._id, {
+            assignments: student.assignments
+        }).then(function (response) {
+            return response.data;
+        }, function (response) {
+            alert("Error " + response.status + ": " + response.statusText);
+        });
+    };
     this.reset = function () {
         this.student = {};
         console.log("reset");

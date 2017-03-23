@@ -47,7 +47,7 @@
 
                             <div class="form-group">
                                 <label for="due-date">Due Date</label>
-                                <input type="date" id="due-date" class="form-control" ng-model="assignment.dueDate">
+                                <input type="date"  id="due-date" class="form-control" ng-model="assignment.dueDate">
                             </div>
                         </form>
                     </form>
@@ -69,6 +69,7 @@
                 <th>Edit</th>
                 <th ng-if="isParent === true">Delete</th>
             </thead>
+<!--
             <tr class="overDue" ng-if="assignment.dueDate < today" ng-repeat="assignment in student.assignments | orderBy: 'dueDate' track by $index">
                 <td ng-style="{color: 'red'}"> {{ assignment.name }}</td>
                 <td ng-style="{color: 'red'}"> {{ assignment.subject }}</td>
@@ -78,7 +79,7 @@
                         <span class="glyphicon glyphicon-eye-open"></span></button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editAssignModal" ng-click="edit(assignment)">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editAssignModal" ng-click="findAssignment(assignment)">
                         <span class="glyphicon glyphicon-pencil"></span></button>
                 </td>
                  <td ng-if="isParent === true">
@@ -86,9 +87,10 @@
                         <span class="glyphicon glyphicon-trash"></span></button>
                 </td>
             </tr>
+-->
 
             
-            <tr ng-if="assignment.dueDate > today" ng-repeat="assignment in student.assignments | orderBy: 'dueDate' track by $index">
+            <tr ng-repeat="assignment in student.assignments | orderBy: 'dueDate' track by $index">
                 <td> {{ assignment.name }}</td>
                 <td> {{ assignment.subject }}</td>
                 <td> {{ assignment.dueDate | date: 'shortDate'}}</td>
@@ -99,7 +101,7 @@
                 </td>
                 <!-- Trigger the edit assignment modal with a button -->
                 <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editAssignModal" ng-click="edit(assignment)">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editAssignModal" ng-click="findAssignment(assignment)">
                         <span class="glyphicon glyphicon-pencil"></span></button>
                 </td>
                 <td ng-if="isParent === true">
@@ -154,39 +156,39 @@
                     <form role="form">
                         <form>
                             <div class="form-group">
-                                <label for="name">Assignment Name: {{ changeAssignment.name }}</label>
-                                <input type="text" id="name" class="form-control" ng-model="changeAssignment.name">
+                                <label for="name">Assignment Name: {{ editView.name }}</label>
+                                <input type="text" id="name" class="form-control" ng-model="editView.name">
                             </div>
 
                             <div class="form-group">
-                                <label for="subject">Subject: {{ changeAssignment.subject }}</label>
-                                <input type="text" id="subject" class="form-control" ng-model="changeAssignment.subject">
+                                <label for="subject">Subject: {{ editView.subject }}</label>
+                                <input type="text" id="subject" class="form-control" ng-model="editView.subject">
                             </div>
 
                             <div class="form-group">
-                                <label for="tasks">Tasks: {{ changeAssignment.tasks }}</label>
-                                <input type="text" id="tasks" class="form-control" ng-model="changeAssignment.tasks">
+                                <label for="tasks">Tasks: {{ editView.tasks }}</label>
+                                <input type="text" id="tasks" class="form-control" ng-model="editView.tasks">
                             </div>
 
                             <div class="form-group">
-                                <label for="notes">Notes: {{ changeAssignment.notes }}</label>
-                                <input type="text" id="notes" class="form-control" ng-model="changeAssignment.notes">
+                                <label for="notes">Notes: {{ editView.notes }}</label>
+                                <input type="text" id="notes" class="form-control" ng-model="editView.notes">
                             </div>
 
                             <div class="form-group">
-                                <label for="priority">Priority: {{ changeAssignment.priority }}</label>
-                                <input type="number" id="priority" class="form-control" ng-model="changeAssignment.priority">
+                                <label for="priority">Priority: {{ editView.priority }}</label>
+                                <input type="number" id="priority" class="form-control" ng-model="editView.priority">
                             </div>
 
                             <div class="form-group">
-                                <label for="due-date">Due Date: {{ assignment.dueDate | date: 'shortDate' }}</label>
-                                <input type="date" id="due-date" class="form-control" ng-model="assignment.dueDate">
+                                <label for="due-date">Due Date: {{ editView.dueDate | date: 'shortDate' }}</label>
+                                <input type="date" id="due-date" class="form-control" ng-model="new.dueDate">
                             </div>
                         </form>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-default btn-primary" data-dismiss="modal" ng-click="editAssignment(ChangeAssignment)">Save Assignment</button>
+                    <button type="submit" class="btn btn-default btn-primary" data-dismiss="modal" ng-click="editAssignment(editView, new)">Save Assignment</button>
                 </div>
             </div>
 
