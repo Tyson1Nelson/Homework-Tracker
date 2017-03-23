@@ -9,7 +9,14 @@ h1 {
     text-align: center;
 }
 
-.student-name:hover {
+h2 {
+    color: #ffff;
+    font-family: 'Abel', sans-serif;
+
+    text-align: center;
+}
+
+h2:hover {
     color: #F53240;
 }
 
@@ -34,7 +41,7 @@ p {
     margin-bottom: none;
 }
 
-.container {
+.container-fluid {
     padding-right: 10px;
 }
 
@@ -106,4 +113,8 @@ background-color: #F9BE02;
 
 .glyphicon-apple {
     color: #02C8A7;
+}
+
+.pencil {
+    background-color: #F53240;
 }
