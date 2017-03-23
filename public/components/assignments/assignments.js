@@ -39,8 +39,8 @@ angular.module("myApp")
         console.log(assignment)
         console.log("assignment")
         $scope.showAssignment = assignment;
-
     }
+    
     $scope.editAssignment = function (assignment,date) {
         console.log(assignment);
         console.log(date);
