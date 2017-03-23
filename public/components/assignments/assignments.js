@@ -32,8 +32,8 @@ angular.module("myApp")
     console.log($scope.student);
     
     $scope.seeAssignments = function (assignment){
-        console.log(assignment)
-        console.log("assignment")
+        console.log(assignment);
+        console.log("assignment");
         $scope.showAssignment = assignment;
         
     }
