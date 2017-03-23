@@ -21,7 +21,7 @@ angular.module("myApp")
             $scope.isParent = true;
             $scope.student = ChildService.student;
         }
-    }
+    };
 
     $scope.createAssignment = function (assignment) {
         $scope.student.assignments.push(assignment);
@@ -29,65 +29,41 @@ angular.module("myApp")
         if (ChildService.student._id === undefined) {
             ChildService.createNewAssignment(assignment);
         } else {
-            ChildService.createAssignment($scope.student);
+            toDb();
             $scope.student = ChildService.student;
         }
     };
-    console.log($scope.student);
 
     $scope.seeAssignments = function (assignment) {
-        console.log(assignment)
-        console.log("assignment")
         $scope.showAssignment = assignment;
-
     }
-    $scope.editAssignment = function (assignment,date) {
-        console.log(assignment);
-        console.log(date);
-        var index = $scope.student.assignments.indexOf($scope.editView);
-        assignment.dueDate = date.dueDate;
-        console.log(assignment);
-        getInfo();
 
+    $scope.editAssignment = function (assignment) {
+        var index = $scope.student.assignments.indexOf($scope.editView);
+        for (key in assignment) {
+            if (assignment[key] !== $scope.editView[key]) {
+                $scope.editView[key] = assignment[key];
+            };
+        }
+        $scope.new = {};
+        toDb();
     }
 
     $scope.findAssignment = function (assignment) {
         var index = $scope.student.assignments.indexOf(assignment);
-        console.log($scope.student.assignments);
         $scope.editView = $scope.student.assignments[index];
-        console.log($scope.editView.dueDate)
     }
 
     $scope.delete = function (assignment) {
         var index = $scope.student.assignments.indexOf(assignment);
         $scope.student.assignments.splice(index, 1);
-        if (ChildService.student._id === undefined) {
-            //            ChildService.createNewAssignment(assignment);
-        } else {
-            ChildService.delete($scope.student);
-            ChildService.getSingleStudent($scope.student).then(function (response) {
-                console.log(response);
-            });
-        }
+        toDb();
+        ChildService.getSingleStudent($scope.student);
+    }
+    function toDb (){
+        ChildService.editAssignmentInfo($scope.student);
     }
 
     getInfo();
     $scope.student = ChildService.student;
-            }])
-
-.controller('viewAssignmentController', ["$scope", "AssignmentService", function ($scope, AssignmentView) {
-
-    AssignmentView.query(function (response) {
-        $scope.showAssignments = response.results;
-    });
-
-    $scope.showAssignments = function (objectId) {
-        $scope.modalOn = true;
-        $scope.modal = AssignmentView.get({
-            showAssignments: objectId
-        });
-
-        console.log($scope.modal)
-    }
-
-    }]);
+}]);
