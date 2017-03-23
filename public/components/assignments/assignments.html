@@ -1,7 +1,6 @@
 <h5>Today's Date: {{ date | date: 'shortDate' }}</h5>
 <h1 ng-show="isParent">{{ student.name }}'s Assignments</h1>
 <h1 ng-hide="isParent">Hello {{ student.name }}</h1>
-<!--<h1>{{student.assignments}}</h1>-->
 <div>
 
     <!-- Trigger the create assignment modal with a button -->
@@ -54,6 +53,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-default btn-primary" data-dismiss="modal" ng-click="createAssignment(newAssignment)">Add Assignment</button>
+                    <button type="button" class="btn btn-default btn-primary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -134,8 +134,7 @@
                     <h3>Date: {{showAssignment.dueDate | date: 'shortDate'}} </h3>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
+                    <button type="button" class="btn btn-default btn-primary" data-dismiss="modal">Close</button>
                 </div>
             </div>
 
@@ -154,7 +153,6 @@
                 </div>
                 <div class="modal-body">
                     <form role="form">
-                        <form>
                             <div class="form-group">
                                 <label for="name">Assignment Name: {{ editView.name }}</label>
                                 <input type="text" id="name" class="form-control" ng-model="new.name">
@@ -184,7 +182,6 @@
                                 <label for="due-date">Due Date: {{ editView.dueDate | date: 'shortDate' }}</label>
                                 <input type="date" min="{{today}}" id="due-date" class="form-control" ng-model="new.dueDate">
                             </div>
-                        </form>
                     </form>
                 </div>
                 <div class="modal-footer">
