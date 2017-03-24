@@ -7,7 +7,7 @@
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#createAssignModal">Create
         Assignment
     </button>
-
+    <p>Click the 'create Assignment' button to add an assignment</p>
     <!-- Table of Assignments -->
     <div style="overflow-x:auto;">
         <table class="table">
@@ -20,7 +20,7 @@
                 <th ng-if="isParent === true">Delete</th>
             </thead>
 
-            <tr data-ng-class="{strikethrough: assignment.completed, pastDue: assignment.dueDate < today}" ng-repeat="assignment in student.assignments | orderBy: 'dueDate' track by $index">
+            <tr data-ng-class="{completed: assignment.completed, pastDue: assignment.dueDate < today && !assignment.completed}" ng-repeat="assignment in student.assignments | orderBy: 'dueDate' track by $index">
 
                 <td> {{ assignment.name }}</td>
                 <td> {{ assignment.subject }}</td>
@@ -36,12 +36,11 @@
                         <span class="glyphicon glyphicon-pencil"></span></button>
                 </td>
                 <td ng-if="isParent === true">
-                    <button type="button" class="btn btn-danger">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAssignModal" ng-click="findAssignment(assignment)">
                         <span class="glyphicon glyphicon-trash"></span></button>
                 </td>
 
             </tr>
-
         </table>
     </div>
 
@@ -167,7 +166,7 @@
 
                         <div class="form-group">
                             <label for="due-date">Due Date: {{ editView.dueDate | date: 'shortDate' }}</label>
-                            <input type="date" min="{{today}}" id="due-date" class="form-control" ng-model="new.dueDate">
+                            <input type="date"  id="due-date" class="form-control" ng-model="new.dueDate">
                         </div>
 
                         <div ng-if="isParent" class="form-group">

@@ -29,9 +29,11 @@ angular.module("myApp")
         console.log(assignment);
         if (ChildService.student._id === undefined) {
             ChildService.createNewAssignment(assignment);
+            toDb();
         } else {
             toDb();
         }
+        $scope.newAssignment = {};
     };
 
     $scope.seeAssignments = function (assignment) {
@@ -54,21 +56,26 @@ angular.module("myApp")
             toDb();
         }
     }
+    
+    var index = 0;
 
     $scope.findAssignment = function (assignment) {
-        var index = $scope.student.assignments.indexOf(assignment);
+        console.log(assignment);
+        index = $scope.student.assignments.indexOf(assignment);
         $scope.editView = $scope.student.assignments[index];
     }
-
+    
     $scope.delete = function (assignment) {
-        var index = $scope.student.assignments.indexOf(assignment);
         $scope.student.assignments.splice(index, 1);
         toDb();
         ChildService.getSingleStudent($scope.student);
     }
     function toDb (){
-        ChildService.editAssignmentInfo($scope.student);
-        $scope.student = ChildService.student;
+        ChildService.editAssignmentInfo($scope.student).then(function(response){
+            $scope.student = response;
+            $scope.student = ChildService.student;
+        })
+//        $scope.student = ChildService.student;
     }
 
     getInfo();
