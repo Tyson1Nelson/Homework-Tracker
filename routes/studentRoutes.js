@@ -42,11 +42,15 @@ studentRouter.route("/:assignmentId")
             if (req.body.completed) {
                 delete req.body.completed;
             }
-
+//                console.log(req.body);
+                console.log(assignment.toObject().hasOwnProperty(key));
+                console.log(assignment.toObject());
             for (var key in req.body) {
-                if (assignment.toObject().hasOwnProperty(key)) {
+//                console.log(assignment)
+                console.log(assignment.toObject().hasOwnProperty(key));
+//                if (assignment.toObject().hasOwnProperty(key)) {
                     assignment[key] = req.body[key] || assignment[key];
-                }
+//                }
             }
 
             student.save(function(err) {

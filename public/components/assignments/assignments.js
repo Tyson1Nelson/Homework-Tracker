@@ -46,7 +46,8 @@ angular.module("myApp")
         }
         $scope.new = {};
         if (ChildService.student._id === undefined) {
-            ChildService.edit($scope.student);
+            console.log($scope.editView)
+            ChildService.edit($scope.editView);
         } else {
             toDb();
         }
