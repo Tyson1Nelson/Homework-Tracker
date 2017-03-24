@@ -8,13 +8,18 @@ h1 {
     text-align: center;
 }
 
+.students {
+    text-align: center;
+    color: darkslategray;
+}
+
 h2 {
     color: #ffff;
     font-family: 'Abel', sans-serif;
     /*    text-align: center;*/
 }
 
-h2:hover {
+p:hover {
     color: #F53240;
 }
 
@@ -28,10 +33,25 @@ h4 {
     font-family: 'Abel', sans-serif;
 }
 
+.date {
+    font-family: 'Abel', sans-serif;
+    font-size: 1.25em;
+}
+
 p {
     font-family: 'Open Sans Condensed', sans-serif;
     color: white;
     font-size: 1.25em;
+}
+
+.left {
+    font-size: 1.75em;
+    color: darkslategray;
+}
+
+.table {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 1.5em;
 }
 
 .jumbotron {
@@ -96,6 +116,10 @@ p {
     background-color: #F53240;
 }
 
+.btn-danger {
+    background-color: #F53240;
+}
+
 .navbar-default {
     background-color: #F53240;
     border-color: #F53240;
@@ -121,13 +145,13 @@ p {
 }
 
 .pencil {
-    background-color: #F53240;
+    background-color: #7CDBDS;
 }
 .strikethrough {
   text-decoration: line-through;
 }
 .pastDue {
-  color: red;
+  color: #F53240;
 }
 /*
 :checked + tr {
