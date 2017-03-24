@@ -19,4 +19,9 @@
         </div>
     </div>
 </div>
-<h1 ng-if="loggedIn === true">Hello {{user.name}} </h1>
+<div ng-if="loggedIn === true && !user.isParent">
+    <h1>Hello {{user.name}} </h1>
+    <h3 class="text-center">You currently have <u ng-style="{color: 'darkred'}">{{user.assignments.length}}</u> assignments</h3>
+</div>
+
+<h1 ng-if="user.isParent">Let's see what your kids are up to</h1>

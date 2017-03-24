@@ -1,15 +1,9 @@
 angular.module("myApp")
 
 .controller("ChildController", ["$scope", "ChildService", function ($scope, ChildService) {
-    //    $scope.assignment = {};
     $scope.students = [];
-    //    $scope.signup = false;
     $scope.passwordMessage = false;
 
-    ChildService.getStudents().then(function (response) {
-        //        console.log(response);
-        $scope.students = response;
-    });
     $scope.studentInfo = function (info) {
         ChildService.studentInfo(info);
     };
@@ -22,9 +16,11 @@ angular.module("myApp")
     $scope.find = function (student, i) {
         console.log(i);
         info = student;
+        $scope.name = info.name;
     }
     $scope.deleteStudent = function () {
         var index = $scope.students.indexOf(info);
+        
         $scope.students.splice(index, 1);
     }
 
@@ -33,15 +29,23 @@ angular.module("myApp")
         console.log(student);
         if (student !== undefined) {
             ChildService.editStudent(info, student).then(function (resonse) {
-                $scope.students[index] = student;
+                for(key in student){
+                    if(student[key] !== info[key]){
+                        $scope.students[index][key] = student[key]
+                    };
+                };
             });
         };
         $scope.clearInfo();
-
     }
+    
     $scope.clearInfo = function () {
+//        console.log($scope.student);
         delete $scope.student;
         $scope.passwordRepeat = undefined;
     }
+    ChildService.getStudents().then(function (response) {
+        $scope.students = response;
+    });
 
 }]);
