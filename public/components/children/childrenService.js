@@ -43,6 +43,13 @@ angular.module("myApp")
             alert("Error " + response.status + ": " + response.statusText);
         });
     };
+    this.editStudent = function(student, newInfo){
+        return $http.put("/api/students/" + student._id, newInfo).then(function (response) {
+            return response.data;
+        }, function (response) {
+            alert("Error " + response.status + ": " + response.statusText);
+        });
+    };
     
     this.editAssignmentInfo = function(student){
         console.log(student);
