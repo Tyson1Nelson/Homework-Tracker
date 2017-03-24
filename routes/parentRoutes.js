@@ -15,6 +15,7 @@ parentRoute.route("/")
 
     .post(function (req, res) {
         var student = new Student(req.body);
+        console.log(req.body);
         student.parent = req.user._id;
         student.save(function (err, newStudent) {
             if (err) res.status(500).send(err);

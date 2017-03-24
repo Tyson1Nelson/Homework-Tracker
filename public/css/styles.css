@@ -123,8 +123,9 @@ p {
 .pencil {
     background-color: #F53240;
 }
-.strikethrough {
-  text-decoration: line-through;
+.completed {
+     text-decoration: line-through;
+    font-size: 18px;
 }
 .pastDue {
   color: red;
