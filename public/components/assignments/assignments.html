@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <h5>Today's Date: {{ date | date: 'shortDate' }}</h5>
+    <h5 class="date">Today's Date: {{ date | date: 'shortDate' }}</h5>
     <h1 ng-show="isParent">{{ student.name }}'s Assignments</h1>
     <h1 ng-hide="isParent">Hello {{ student.name }}</h1>
 
@@ -32,7 +32,7 @@
                 </td>
                 <!-- Trigger the edit assignment modal with a button -->
                 <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editAssignModal" ng-click="findAssignment(assignment)">
+                    <button type="button" class="btn btn-primary pencil" data-toggle="modal" data-target="#editAssignModal" ng-click="findAssignment(assignment)">
                         <span class="glyphicon glyphicon-pencil"></span></button>
                 </td>
                 <td ng-if="isParent === true">
