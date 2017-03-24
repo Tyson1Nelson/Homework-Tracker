@@ -5,8 +5,11 @@ body {
 h1 {
     color: #ffff;
     font-family: 'Abel', sans-serif;
-
     text-align: center;
+}
+
+h1.left {
+    text-align: left;
 }
 
 .student-name:hover {
