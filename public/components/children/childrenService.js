@@ -43,6 +43,13 @@ angular.module("myApp")
             alert("Error " + response.status + ": " + response.statusText);
         });
     };
+    this.editStudent = function(student, newInfo){
+        return $http.put("/api/students/" + student._id, newInfo).then(function (response) {
+            return response.data;
+        }, function (response) {
+            alert("Error " + response.status + ": " + response.statusText);
+        });
+    };
     
     this.editAssignmentInfo = function(student){
         console.log(student);
@@ -76,11 +83,11 @@ angular.module("myApp")
         });
     };
     
-    this.edit = function (student) {
-          console.log(student);
-        return $http.put("/api/assignments/" + student._id, {
-            assignments: student.assignments
-        }).then(function (response) {
+    this.edit = function (assignment) {
+//          console.log(student);
+          console.log(assignment);
+        return $http.put("/api/assignments/" + assignment._id, assignment).then(function (response) {
+            console.log(response.data);
             return response.data;
         }, function (response) {
             alert("Error " + response.status + ": " + response.statusText);

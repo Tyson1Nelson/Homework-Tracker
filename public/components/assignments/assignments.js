@@ -3,6 +3,7 @@ angular.module("myApp")
 .controller("AssignmentsController", ["$scope", "ChildService", function ($scope, ChildService) {
 
     $scope.student = [];
+    $scope.editView = {completed: false};
 
     var date = new Date();
     $scope.today = date.getFullYear() + '-' + 0 + (date.getMonth() + 1) + '-' + date.getDate();
@@ -38,6 +39,7 @@ angular.module("myApp")
     }
 
     $scope.editAssignment = function (assignment) {
+        console.log(assignment);
         var index = $scope.student.assignments.indexOf($scope.editView);
         for (key in assignment) {
             if (assignment[key] !== $scope.editView[key]) {
@@ -46,7 +48,8 @@ angular.module("myApp")
         }
         $scope.new = {};
         if (ChildService.student._id === undefined) {
-            ChildService.edit($scope.student);
+            console.log($scope.editView)
+            ChildService.edit($scope.editView);
         } else {
             toDb();
         }
