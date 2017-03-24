@@ -30,7 +30,6 @@ angular.module("myApp")
             ChildService.createNewAssignment(assignment);
         } else {
             toDb();
-            $scope.student = ChildService.student;
         }
     };
 
@@ -46,7 +45,11 @@ angular.module("myApp")
             };
         }
         $scope.new = {};
-        toDb();
+        if (ChildService.student._id === undefined) {
+            ChildService.edit($scope.student);
+        } else {
+            toDb();
+        }
     }
 
     $scope.findAssignment = function (assignment) {
@@ -62,8 +65,11 @@ angular.module("myApp")
     }
     function toDb (){
         ChildService.editAssignmentInfo($scope.student);
+        $scope.student = ChildService.student;
     }
 
     getInfo();
     $scope.student = ChildService.student;
+    console.log(ChildService.student._id === undefined);
+    
 }]);

@@ -76,6 +76,16 @@ angular.module("myApp")
         });
     };
     
+    this.edit = function (student) {
+          console.log(student);
+        return $http.put("/api/assignments/" + student._id, {
+            assignments: student.assignments
+        }).then(function (response) {
+            return response.data;
+        }, function (response) {
+            alert("Error " + response.status + ": " + response.statusText);
+        });
+    };
     
     this.reset = function () {
         this.student = {};
