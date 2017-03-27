@@ -1,47 +1,48 @@
 <div class="container-fluid">
-   <div class="row">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-8">
-    <h1 class="students"><b>Your Students</b></h1>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <h1 class="students"><b>Your Students</b></h1>
 
-    <br>
-    
-    <!-- Trigger the add student modal with a button -->
-    <button type="button" class="btn btn-primary btn-lg center-block" data-toggle="modal" data-target="#addStudentModal">Add Student
+            <br>
+
+            <!-- Trigger the add student modal with a button -->
+            <button type="button" class="btn btn-primary btn-lg center-block" data-toggle="modal" data-target="#addStudentModal">Add Student
     </button>
 
-    <br>
-    <br>
+            <br>
+            <br>
 
-   
-   
-    <div style="overflow-x:auto;">
-        <table class="table">
-            <thead>
-                <th>Student Name</th>
-                <th>Edit Student</th>
-                <th>Delete Student</th>
-            </thead>
-            <tr ng-repeat="student in students track by $index">
-                <td>
-                    <p class="left" ng-click="studentInfo(student)">{{ student.name }}</p></td>
-                <!-- Trigger the edit student modal with a button -->
-                <td>
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#editStudentModal" ng-click="find(student, $index)">
+
+
+            <div style="overflow-x:auto;">
+                <table class="table">
+                    <thead>
+                        <th>Student Name</th>
+                        <th>Edit Student</th>
+                        <th>Delete Student</th>
+                    </thead>
+                    <tr ng-repeat="student in students track by $index">
+                        <td>
+                            <p class="left" ng-click="studentInfo(student)">{{ student.name }}</p>
+                        </td>
+                        <!-- Trigger the edit student modal with a button -->
+                        <td>
+                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#editStudentModal" ng-click="find(student, $index)">
                         <span class="glyphicon glyphicon-pencil"></span></button>
-                </td>
-                <!-- Trigger the delete student modal with a button -->
-                <td>
-                    <button type="button" class="btn btn-danger btn-lg" ng-click="find(student, $index)" data-toggle="modal" data-target="#deleteStudentModal">
+                        </td>
+                        <!-- Trigger the delete student modal with a button -->
+                        <td>
+                            <button type="button" class="btn btn-danger btn-lg" ng-click="find(student, $index)" data-toggle="modal" data-target="#deleteStudentModal">
                         <span class="glyphicon glyphicon-trash"></span></button>
-                </td>
-            </tr>
+                        </td>
+                    </tr>
 
-        </table>
+                </table>
+            </div>
+        </div>
     </div>
-</div>
-    </div>
-    
+
 
     <!-- Add Student Modal -->
     <div id="addStudentModal" class="modal fade" role="dialog">
@@ -73,7 +74,7 @@
                         <div class="form-group">
                             <label for="passwordRepeat">Repeat Password</label>
                             <input type="password" id="passwordRepeat" class="form-control" ng-model="passwordRepeat">
-                            <span class="text-danger" ng-show="passwordMessage">{{passwordMessage}}</span>
+                            <span class="text-danger" ng-show="student.password !== passwordRepeat">Passwords do not match!</span>
                         </div>
 
 
@@ -93,7 +94,7 @@
             <!-- Edit Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" data-dismiss="modal" ng-click="clearInfo()">&times;</button>
                     <h4 class="modal-title">Edit Student</h4>
                 </div>
                 <div class="modal-body">
@@ -124,7 +125,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default"  ng-click="clearInfo()" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" ng-click="clearInfo()" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
