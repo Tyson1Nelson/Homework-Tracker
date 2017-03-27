@@ -149,7 +149,7 @@ p {
 }
 .completed {
      text-decoration: line-through;
-    font-size: 18px;
+    font-size: 22px;
 }
 .pastDue {
   color: #F53240;

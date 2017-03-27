@@ -38,7 +38,7 @@ angular.module("myApp.Auth", ["ngRoute", "ngStorage"])
 .service("UserService", ["$http", "$location", "$localStorage", "TokenService", function ($http, $location, $localStorage, TokenService) {
     var self = this;
 
-    this.user = $localStorage.user || {};
+    this.user = $localStorage.user || null;
 
     this.signup = function (user) {
         return $http.post("/auth/signup", user);
